@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:own_website/Application/Detection/detection_bloc.dart';
 import 'package:own_website/Presentation/DeskTop/desktop.dart';
 import 'package:own_website/Presentation/Mobile/mobile.dart';
 import 'package:own_website/Presentation/Tablet/tablet.dart';
@@ -12,8 +14,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: Homepage());
+    return BlocProvider(
+      create: (context) => DetectionBloc(),
+      child: const MaterialApp(
+          debugShowCheckedModeBanner: false, home: Homepage()),
+    );
   }
 }
 
